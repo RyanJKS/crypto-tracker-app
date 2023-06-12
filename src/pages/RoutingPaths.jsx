@@ -7,7 +7,7 @@ function RoutingPaths() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/chart/:ticker" element={<CryptoChart />} />
+      <Route path="/chart/:coin" element={<CryptoChart />} />
       <Route path="/*" element={<Home />} />
     </Routes>
   );

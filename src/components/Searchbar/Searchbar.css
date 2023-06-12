@@ -1,0 +1,42 @@
+/*DATA FILTERED RESULTS*/
+.dataResult {
+    margin-top: 5px;
+    width: 500px;
+    height: 200px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+    overflow-y: auto;
+    z-index: 1;
+    position: absolute;
+  }
+  
+  .dataResult::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .dataResult .dataItem {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: black;
+  }
+  
+  
+  li {
+    text-decoration: none;
+    list-style: none;
+    font: sans-serif;
+    cursor: pointer;
+  }
+  
+  li:hover {
+    background-color: grey;
+  }
+
+  @media screen and (max-width: 768px) {
+    .dataResult {
+      width: 325px;
+    }
+  }

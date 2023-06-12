@@ -11,21 +11,24 @@ export default function Carousel() {
     },
     1024: {
       items: 4,
-      itemsFit: "contain",
     },
   };
 
   return (
-    <AliceCarousel
-      mouseTracking
-      infinite
-      autoPlayInterval={1000}
-      animationDuration={1500}
-      disableDotsControls
-      disableButtonsControls
-      responsive={responsiveItem}
-      autoPlay
-      items={items}
-    />
+    <div className="carousel-container">
+      <AliceCarousel
+        mouseTracking
+        infinite
+        autoPlayInterval={1000}
+        animationDuration={1500}
+        mouseTrackingEnabled={true}
+        disableDotsControls
+        disableButtonsControls
+        responsive={responsiveItem}
+        autoPlay
+        items={items}
+        className="carousel"
+      />
+    </div>
   );
 }

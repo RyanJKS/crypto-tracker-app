@@ -1,72 +1,105 @@
-import * as React from "react";
-import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import React, { useContext } from "react";
+import {
+  TableContainer,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  Paper,
+  Button,
+} from "@mui/material";
+import { AiFillCaretUp, AiOutlineCaretDown } from "react-icons/ai";
+import { CryptoContext } from "../../context/CryptoContext";
+import { useNavigate } from "react-router-dom";
+import { ConvertNumber } from "./Filter";
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
+const colorStyle = (change) => {
+  return change > 0 ? " #60B45A" : "#ff0000";
+};
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
+const directionIcon = (direction) => {
+  return direction > 0 ? <AiFillCaretUp /> : <AiOutlineCaretDown />;
+};
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
+function WatchListTable({ cryptoData }) {
+  const { deleteStock } = useContext(CryptoContext);
+  const navigate = useNavigate();
 
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
-
-export default function WatchListTable() {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+      <Table aria-label="simple table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell align="right">Calories</StyledTableCell>
-            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+            <TableCell>Coin</TableCell>
+            <TableCell>Current Price</TableCell>
+            <TableCell>24h (%)</TableCell>
+            <TableCell>7d (%)</TableCell>
+            <TableCell>Volume</TableCell>
+            <TableCell>Market Cap</TableCell>
+            <TableCell>Circulating Supply</TableCell>
+            <TableCell>Actions</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
-            </StyledTableRow>
+        <TableBody
+          sx={{ "& tr:nth-of-type(2n+1)": { backgroundColor: "grey.100" } }}
+        >
+          {cryptoData?.map((item, index) => (
+            <TableRow
+              key={index}
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell>
+                <img src={item.image} alt="logo" width="25px" height="25px" />{" "}
+                <span>{item.name}</span>
+              </TableCell>
+              <TableCell>£ {item.currentPrice}</TableCell>
+              <TableCell
+                sx={{ color: colorStyle(item.pricePercentageChange24h) }}
+              >
+                {item.pricePercentageChange24h.toFixed(2)}{" "}
+                {directionIcon(item.pricePercentageChange24h)}
+              </TableCell>
+              <TableCell
+                sx={{ color: colorStyle(item.pricePercentageChange7d) }}
+              >
+                {item.pricePercentageChange7d.toFixed(2)}{" "}
+                {directionIcon(item.pricePercentageChange7d)}
+              </TableCell>
+
+              <TableCell>{ConvertNumber(item.volume)}</TableCell>
+              <TableCell>£ {ConvertNumber(item.marketCap)}</TableCell>
+              <TableCell>{ConvertNumber(item.circulatingSupply)}</TableCell>
+
+              <TableCell>
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={() => {
+                    navigate(`/chart/${cryptoData[index].id}`);
+                  }}
+                  size="small"
+                >
+                  Chart
+                </Button>
+                <Button
+                  variant="contained"
+                  color="error"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteStock(cryptoData[index].id);
+                  }}
+                  size="small"
+                >
+                  Delete
+                </Button>
+              </TableCell>
+            </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
   );
 }
+
+export default WatchListTable;

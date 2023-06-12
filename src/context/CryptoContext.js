@@ -3,17 +3,22 @@ export const CryptoContext = createContext();
 
 export const CryptoContextProvider = (props) => {
   const [watchCrypto, setWatchCrypto] = useState(
-    localStorage.getItem("current")?.split(",") || ["ETH", "BTC"]
+    localStorage.getItem("current-crypto")?.split(",") || ["bitcoin"]
   );
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [allChartData, setAllChartData] = useState([]);
+
   useEffect(() => {
-    localStorage.setItem("current", watchCrypto);
+    localStorage.setItem("current-crypto", watchCrypto);
   }, [watchCrypto]);
 
-  const addCrypto = (crypto) => {
+  const addCrypto = (id) => {
     /* if cant find crypto in list, add it to list */
-    if (watchCrypto.indexOf(crypto) === -1) {
-      setWatchCrypto([...watchCrypto, crypto]);
+    if (watchCrypto.indexOf(id) === -1) {
+      setWatchCrypto([...watchCrypto, id]);
+    } else {
+      alert("Crypto already in list");
     }
   };
 
@@ -24,11 +29,24 @@ export const CryptoContextProvider = (props) => {
         return element !== crypto;
       })
     );
+
+    if (watchCrypto.length === 0) {
+      localStorage.removeItem("current-crypto");
+    }
   };
 
   return (
     <CryptoContext.Provider
-      value={{ watchCrypto, addCrypto, setWatchCrypto, deleteCrypto }}
+      value={{
+        watchCrypto,
+        addCrypto,
+        setWatchCrypto,
+        deleteCrypto,
+        isLoading,
+        setIsLoading,
+        allChartData,
+        setAllChartData,
+      }}
     >
       {props.children}
     </CryptoContext.Provider>

@@ -1,1 +1,11 @@
 @import "react-alice-carousel/lib/alice-carousel.css";
+
+.carousel-container{
+    width: 85%;
+    height: 100%;
+    padding: 10vh;
+}
+
+.carousel{
+    height: 100%;
+}

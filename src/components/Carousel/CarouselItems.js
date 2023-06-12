@@ -1,38 +1,21 @@
-const carouselHeight = "100vh";
+import bitcoin from "../../assets/bitcoin.png";
+import binance from "../../assets/binance-usd.png";
+import dogecoin from "../../assets/dogecoin.png";
+import ethereum from "../../assets/ethereum.png";
+import internet from "../../assets/internet-computer.png";
+import tether from "../../assets/tether.png";
+import shiba from "../../assets/shiba-inu.png";
+import tron from "../../assets/tron.png";
+
+const carouselHeight = "80vh";
+
 export const items = [
-  <img
-    src={require("../../assets/Google-Logo.jpg")}
-    alt="Google Logo"
-    height={carouselHeight}
-  />,
-  <img
-    src={require("../../assets/Tesla-logo.jpg")}
-    alt="Tesla Logo"
-    height={carouselHeight}
-  />,
-  <img
-    src={require("../../assets/Twitter-Logo.jpg")}
-    alt="Twitter Logo"
-    height={carouselHeight}
-  />,
-  <img
-    src={require("../../assets/apple-logo.jpg")}
-    alt="Apple-logo"
-    height={carouselHeight}
-  />,
-  <img
-    src={require("../../assets/amazon-logo.jpg")}
-    alt="Amazon-logo"
-    height={carouselHeight}
-  />,
-  <img
-    src={require("../../assets/meta-logo.jpg")}
-    alt="Meta-logo"
-    height={carouselHeight}
-  />,
-  <img
-    src={require("../../assets/netflix-logo.jpg")}
-    alt="Netflix-logo"
-    height={carouselHeight}
-  />,
+  <img src={bitcoin} alt="bitcoin-logo" height={carouselHeight} />,
+  <img src={ethereum} alt="ethereum-logo" height={carouselHeight} />,
+  <img src={shiba} alt="shiba-logo" height={carouselHeight} />,
+  <img src={tether} alt="tether-logo" height={carouselHeight} />,
+  <img src={tron} alt="tron-logo" height={carouselHeight} />,
+  <img src={dogecoin} alt="dogecoin-logo" height={carouselHeight} />,
+  <img src={binance} alt="binance-logo" height={carouselHeight} />,
+  <img src={internet} alt="internet-logo" height={carouselHeight} />,
 ];
