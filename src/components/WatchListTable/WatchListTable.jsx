@@ -23,7 +23,7 @@ const directionIcon = (direction) => {
 };
 
 function WatchListTable({ cryptoData }) {
-  const { deleteStock } = useContext(CryptoContext);
+  const { deleteCrypto } = useContext(CryptoContext);
   const navigate = useNavigate();
 
   return (
@@ -87,7 +87,7 @@ function WatchListTable({ cryptoData }) {
                   color="error"
                   onClick={(e) => {
                     e.stopPropagation();
-                    deleteStock(cryptoData[index].id);
+                    deleteCrypto(cryptoData[index].id);
                   }}
                   size="small"
                 >

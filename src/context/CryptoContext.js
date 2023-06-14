@@ -30,7 +30,7 @@ export const CryptoContextProvider = (props) => {
       })
     );
 
-    if (watchCrypto.length === 0) {
+    if (localStorage.getItem("current-crypto") === ",") {
       localStorage.removeItem("current-crypto");
     }
   };
