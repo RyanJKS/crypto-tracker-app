@@ -86,6 +86,7 @@ CryptoTracker is a cutting-edge, fully responsive React app designed to keep you
 - [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 - [![Material UI][Material-UI.js]][Material-UI-url]
 - [![React Router][ReactRouter.js]][ReactRouter-url]
+- [![NodeJS][NodeJS.js]][NodeJS-url]
 
 ### Extra Packages
 
@@ -198,3 +199,5 @@ Project Link: [https://github.com/RyanJKS/crypto-tracker-app](https://github.com
 [Material-UI-url]: https://mui.com/material-ui/getting-started/overview/
 [ReactRouter.js]: https://img.shields.io/badge/ReactRouter-007FFF?style=for-the-badge&logo=React-Router&logoColor=white
 [ReactRouter-url]: https://reactrouter.com/en/main
+[NodeJS.js]: https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white
+[NodeJS-url]: https://nodejs.org/en
