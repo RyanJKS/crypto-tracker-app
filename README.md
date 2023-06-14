@@ -27,7 +27,7 @@
     <br />
     <a href="https://crypto-tracker-app-gamma.vercel.app/">View Demo</a>
     ·
-    <a href="https://github.com/RyanJKS/crypto-tracker-app-backend">View Backend Code</a>
+    <a href="https://github.com/RyanJKS/crypto-tracker-backend">View Backend Code</a>
     ·
     <a href="https://jhelan.dev/">View Portfolio Website</a>
     ·
