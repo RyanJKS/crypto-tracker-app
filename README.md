@@ -46,6 +46,7 @@
       <ul>
         <li><a href="#built-with">Built With</a></li>
         <li><a href="#extra-packages">Extra Packages</a></li>
+        <li><a href="#functionalities">Functionalities</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -93,10 +94,22 @@ CryptoTracker is a cutting-edge, fully responsive React app designed to keep you
 - REST API (Finhub and Alpha Vantage) - Click <a href="https://www.coingecko.com/en/api/documentation"
                 target="_blank"
                 rel="noreferrer"> here</a> for CoinGecko Documentation
+- ExpressJs
+- Cors
+- Axios
 - React Icons
 - Material UI Icons
 - React ChartJs 2
 - Vercel (Deployment)
+
+### Functionalities
+
+- Users can easily search for cryptocurrencies using the search bar.
+- Users can add multiple cryptocurrencies to their personalized watchlist.
+- Users should select their preferred time variation (e.g., hourly, daily) for charting the price action.
+- Users will have the option to view real-time price charts in either a line chart or a candlestick chart format.
+- Users will have their chosen cryptocurrencies securely stored on local storage for persistent watchlist access.
+- Users will enjoy a fully responsive and visually appealing interface for seamless navigation and engagement.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
